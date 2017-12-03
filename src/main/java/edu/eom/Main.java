@@ -20,7 +20,7 @@ public class Main extends Application{
         String fxmlFile = "/fxml/SceneBuilder.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
-        primaryStage.setTitle("Lab 3");
+        primaryStage.setTitle("TSP Solver");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
