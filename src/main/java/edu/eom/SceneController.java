@@ -75,12 +75,12 @@ public class SceneController implements Initializable{
 		
 		if(popSizeTF.getText().trim().isEmpty() ||  epochNumTF.getText().trim().isEmpty() || 
 				mutProbTF.getText().trim().isEmpty()) {
-			logArea.appendText("\nÍå âñå ïîëÿ çàïîëíåíû.\n");
+			logArea.appendText("\nSome of the fields are empty.\n");
 			return;
 		}
 		if(!popSizeTF.getText().matches("[-+]?\\d+") || !epochNumTF.getText().matches("[-+]?\\d+") ||
 				!mutProbTF.getText().matches("([0-9]*)\\.([0-9]*)")) {
-			logArea.appendText("\nÍåïðàâèëüíûé ôîðìàò.\n");
+			logArea.appendText("\nWrong format.\n");
 			return;
 		}
 					
@@ -171,9 +171,9 @@ public class SceneController implements Initializable{
 
 
             drawPath(coordinatesMatrix, results.getGlobalBestIndividual(), currentGraphPane);
-            //printArray("\nÏîïóëÿöèè", results.getEpochsPopulations());
-            //printArray("\nËó÷øèå ðåçóëüòàòû ïî ýïîõàì: ", results.getEpochsBestFitnesses());
-            logArea.appendText("\nËó÷øèé ðåçóëüòàò çà âñå âðåìÿ: ");
+            //printArray("\nPopulations", results.getEpochsPopulations());
+            //printArray("\nEpochs' best results: ", results.getEpochsBestFitnesses());
+            logArea.appendText("\nBest result ever: ");
             logArea.appendText(""+ fitness(results.getGlobalBestIndividual()));
             /*try {
                 resultsToFile();
@@ -552,10 +552,10 @@ public class SceneController implements Initializable{
 			e.printStackTrace();
 		}
 
-		//printArray("Ïîëíàÿ ìàòðèöà: ", fullMatrix);
-		//printArray("Êîîðäèíàòû: ", coordinatesMatrix);
-		//printArray("Ëó÷øèé ìàðøðóò: ", bestTourArray);
-		logArea.appendText("Ôèòíåñ ôóíêöèÿ ëó÷øåãî ìàðøðóòà: " + fitness(bestTourArray));
+		//printArray("Full matrix: ", fullMatrix);
+		//printArray("Coords: ", coordinatesMatrix);
+		//printArray("Best tour: ", bestTourArray);
+		logArea.appendText("Best tour fitness: " + fitness(bestTourArray));
 
 		drawPath(coordinatesMatrix, bestTourArray, optimalGraphPane);
 	}
