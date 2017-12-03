@@ -171,16 +171,8 @@ public class SceneController implements Initializable{
 
 
             drawPath(coordinatesMatrix, results.getGlobalBestIndividual(), currentGraphPane);
-            //printArray("\nPopulations", results.getEpochsPopulations());
-            //printArray("\nEpochs' best results: ", results.getEpochsBestFitnesses());
             logArea.appendText("\nBest result ever: ");
             logArea.appendText(""+ fitness(results.getGlobalBestIndividual()));
-            /*try {
-                resultsToFile();
-            }
-            catch (FileNotFoundException | UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }*/
         });
 		new Thread(task).start();
 		scrollBar.setMin(0);
