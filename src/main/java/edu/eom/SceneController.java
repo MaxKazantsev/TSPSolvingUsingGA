@@ -75,12 +75,12 @@ public class SceneController implements Initializable{
 		
 		if(popSizeTF.getText().trim().isEmpty() ||  epochNumTF.getText().trim().isEmpty() || 
 				mutProbTF.getText().trim().isEmpty()) {
-			logArea.appendText("\nНе все поля заполнены.\n");
+			logArea.appendText("\nГЌГҐ ГўГ±ГҐ ГЇГ®Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­Г».\n");
 			return;
 		}
 		if(!popSizeTF.getText().matches("[-+]?\\d+") || !epochNumTF.getText().matches("[-+]?\\d+") ||
 				!mutProbTF.getText().matches("([0-9]*)\\.([0-9]*)")) {
-			logArea.appendText("\nНеправильный формат.\n");
+			logArea.appendText("\nГЌГҐГЇГ°Г ГўГЁГ«ГјГ­Г»Г© ГґГ®Г°Г¬Г ГІ.\n");
 			return;
 		}
 					
@@ -171,9 +171,9 @@ public class SceneController implements Initializable{
 
 
             drawPath(coordinatesMatrix, results.getGlobalBestIndividual(), currentGraphPane);
-            //printArray("\nПопуляции", results.getEpochsPopulations());
-            //printArray("\nЛучшие результаты по эпохам: ", results.getEpochsBestFitnesses());
-            logArea.appendText("\nЛучший результат за все время: ");
+            //printArray("\nГЏГ®ГЇГіГ«ГїГ¶ГЁГЁ", results.getEpochsPopulations());
+            //printArray("\nГ‹ГіГ·ГёГЁГҐ Г°ГҐГ§ГіГ«ГјГІГ ГІГ» ГЇГ® ГЅГЇГ®ГµГ Г¬: ", results.getEpochsBestFitnesses());
+            logArea.appendText("\nГ‹ГіГ·ГёГЁГ© Г°ГҐГ§ГіГ«ГјГІГ ГІ Г§Г  ГўГ±ГҐ ГўГ°ГҐГ¬Гї: ");
             logArea.appendText(""+ fitness(results.getGlobalBestIndividual()));
             /*try {
                 resultsToFile();
@@ -423,12 +423,12 @@ public class SceneController implements Initializable{
 		path.setStroke(Color.GREEN);
         path.setStrokeWidth(3);
         pane.getChildren().add(path);
-        fitLabel.setText("Фитнес функция: " + fitness(individual));
+        fitLabel.setText("Г”ГЁГІГ­ГҐГ± ГґГіГ­ГЄГ¶ГЁГї: " + fitness(individual));
         pane.getChildren().add(fitLabel);
 	}
 	
 	private int fitness(int[] individual) {
-		//logArea.appendText("\nРасстояния:\n");
+		//logArea.appendText("\nГђГ Г±Г±ГІГ®ГїГ­ГЁГї:\n");
 		int fitnessValue = 0;	
 		for(int i = 0; i < individual.length-1; i++) {
 			//logArea.appendText(fullMatrix[individual[i]-1][individual[i+1]-1] + "  ");
@@ -498,7 +498,7 @@ public class SceneController implements Initializable{
 		}
 		else if(object.getClass().getTypeName().trim().equals("int[][][]")) {
 			for(int e = 0; e < Array.getLength(object); e++) {
-				 logArea.appendText("Популяция эпохи " + (e+1) + ":\n");
+				 logArea.appendText("ГЏГ®ГЇГіГ«ГїГ¶ГЁГї ГЅГЇГ®ГµГЁ " + (e+1) + ":\n");
 				 int[][] matrix = (int[][]) Array.get(object, e);
 				 for(int i = 0; i < matrix.length; i++) {
 					 for (int j = 0; j <matrix[i].length; j++) {					 
@@ -528,7 +528,7 @@ public class SceneController implements Initializable{
 		epochNumTF.setText("10000");
 		mutProbTF.setText("0.1");
 
-		//file = fileChooser.showOpenDialog(null);
+		
 		file = new File("bays29_full_matrix.txt");
 		try {
 			readData(file, 29, 29, "fullMatrix");
@@ -536,7 +536,7 @@ public class SceneController implements Initializable{
 			e.printStackTrace();
 		}
 
-		//file = fileChooser.showOpenDialog(null);
+		
 		file = new File("bays29_coordinates.txt");
 		try {
 			readData(file, 29, 2, "coordinatesMatrix");
@@ -544,7 +544,7 @@ public class SceneController implements Initializable{
 			e.printStackTrace();
 		}
 
-		//file = fileChooser.showOpenDialog(null);
+		
 		file = new File("bays29_best_tour.txt");
 		try {
 			readData(file, 0, 29, "bestTourArray");
@@ -552,10 +552,10 @@ public class SceneController implements Initializable{
 			e.printStackTrace();
 		}
 
-		//printArray("Полная матрица: ", fullMatrix);
-		//printArray("Координаты: ", coordinatesMatrix);
-		//printArray("Лучший маршрут: ", bestTourArray);
-		logArea.appendText("Фитнес функция лучшего маршрута: " + fitness(bestTourArray));
+		//printArray("ГЏГ®Г«Г­Г Гї Г¬Г ГІГ°ГЁГ¶Г : ", fullMatrix);
+		//printArray("ГЉГ®Г®Г°Г¤ГЁГ­Г ГІГ»: ", coordinatesMatrix);
+		//printArray("Г‹ГіГ·ГёГЁГ© Г¬Г Г°ГёГ°ГіГІ: ", bestTourArray);
+		logArea.appendText("Г”ГЁГІГ­ГҐГ± ГґГіГ­ГЄГ¶ГЁГї Г«ГіГ·ГёГҐГЈГ® Г¬Г Г°ГёГ°ГіГІГ : " + fitness(bestTourArray));
 
 		drawPath(coordinatesMatrix, bestTourArray, optimalGraphPane);
 	}
